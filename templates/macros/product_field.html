@@ -1,0 +1,21 @@
+{% macro render_field(field) %}
+    <label for="{{ field.id }}">{{ field.label() }}:</label>
+    {{ field() }}
+    {% if field.errors %}
+        <ul class="errors">
+            {% for error in field.errors %}
+                <li style="color: red">{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endmacro %}
+
+{% macro variantChoices(product) %}
+    <p><strong>Variant Choices:</strong>
+        <select name="variant" id="variant">
+            {% for choice in product.variant_choices %}
+                <option value="{{ choice }}">{{ choice }}</option>
+            {% endfor %}
+        </select>
+    </p>
+{% endmacro %}

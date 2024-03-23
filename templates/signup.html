@@ -1,0 +1,24 @@
+{% extends "index.html" %}
+
+{% import "macros/field.html" as macros %}
+
+{% block content %}
+<div class="registration-form">
+
+    <h2>Registration Form</h2>
+    <form action="/signup" method="post" class="signup">
+        {{ form.csrf_token }}
+        {{ macros.render_field(form.name) }}
+        {{ macros.render_field(form.email) }}
+        {{ macros.render_field(form.phone) }}
+        {{ macros.render_field(form.gender) }}
+        {{ macros.render_field(form.username) }}
+        {{ macros.render_field(form.password) }}
+        {{ macros.render_field(form.repeat_password) }}
+        {{ macros.render_field(form.agree) }}
+        <div class="form-group">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
+</div>
+{% endblock %}

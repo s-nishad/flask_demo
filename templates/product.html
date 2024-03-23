@@ -1,0 +1,7 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    {% with products=products %}
+        {% include 'productList.html' %}
+    {% endwith %}
+{% endblock %}

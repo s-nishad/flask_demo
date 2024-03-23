@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+</head>
+<body>
+<div class="navbar">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="/signup">Signup</a></li>
+        <li><a href="/product">Product</a></li>
+        <li><a href="/cartList">Cart List</a></li>
+    </ul>
+</div>
+
+<p style="text-align: center; background: aqua;"> This is {{title}} page </p>
+
+<div>
+    {% block content %}
+        {% include 'home.html' %}
+    {% endblock %}
+</div>
+
+</body>
+</html>

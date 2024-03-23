@@ -1,0 +1,7 @@
+{% extends "index.html" %}
+
+{% block content %}
+    {% with profiles = profiles %}
+        {% include 'profileList.html' %}
+    {% endwith %}
+{% endblock %}

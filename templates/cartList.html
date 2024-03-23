@@ -1,0 +1,40 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Shopping Cart</h1>
+    {% if cart %}
+    <table>
+        <thead>
+        <tr>
+            <th>Product</th>
+            <th>Variant</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total Price</th>
+        </tr>
+
+        </thead>
+        <tbody>
+        {% for item in cart %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.variant }}</td>
+            <td>${{ item.price }}</td>
+            <td>{{ item.quantity }}</td>
+            <td> ${{ item.price*item.quantity }}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="4" style="text-align: center; background: #9de5e5;">You Have to pay in total</td>
+             <td style="background: #9de5e5;">${{ totalprice }}</td>
+        </tr>
+        </tbody>
+    </table>
+    {% else %}
+    <p>There no item in cart</p>
+    {% endif %}
+    <a href="{{ url_for('product') }}">Back to Product List</a>
+
+</div>
+{% endblock %}

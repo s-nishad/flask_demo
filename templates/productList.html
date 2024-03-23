@@ -1,0 +1,36 @@
+{% block content %}
+
+{% import "macros/product_field.html" as macros %}
+
+
+<h1>Product List</h1>
+<div class="wrapper">
+    {% for product in products %}
+    <div class="profile-card" id="product-{{product.id}}">
+        {% if product_id == product.id %}
+        <form action="/add_to_cart/{{ product.id }}#product-{{product.id}}" method="post">
+            {{form.csrf_token()}}
+            <h2>{{ product.name }}</h2>
+            <p><strong>Description:</strong> {{ product.short_description }}</p>
+            <p><strong>Category:</strong> {{ product.category }}</p>
+            <p><strong>Price:</strong> ${{ product.price }}</p>
+            <p>{{ macros.render_field(form.variant) }}</p>
+            <p>{{ macros.render_field(form.quantity) }}</p>
+            <p>{{ form.submit() }}</p>
+        </form>
+        {% else %}
+        <form action="/add_to_cart/{{ product.id }}#product-{{product.id}}" method="post">
+            {{form.csrf_token()}}
+            <h2>{{ product.name }}</h2>
+            <p><strong>Description:</strong> {{ product.short_description }}</p>
+            <p><strong>Category:</strong> {{ product.category }}</p>
+            <p><strong>Price:</strong> ${{ product.price }}</p>
+            <p>{{ macros.render_field(blank_product_form.variant) }}</p>
+            <p>{{ macros.render_field(blank_product_form.quantity) }}</p>
+            <p>{{ blank_product_form.submit() }}</p>
+        </form>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+<div class="wrapper">
+    {% for profile in profiles %}
+    <div class="profile-card">
+        <div class="profile-image" style="background-image: url('https://picsum.photos/200/300')"></div>
+        <div class="profile-details">
+            <h2>{{ profile.name }}</h2>
+            <p>Email: {{ profile.mail }}</p>
+            <p>Job: {{ profile.job }}</p>
+            <p>Phone: {{ profile.ssn }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
